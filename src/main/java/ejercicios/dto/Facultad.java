@@ -2,6 +2,8 @@ package ejercicios.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ejercicios.controller.EquipoController;
 import ejercicios.controller.InvestigadorController;
 import jakarta.persistence.Entity;
@@ -16,12 +18,15 @@ public class Facultad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
+	
 	private String nombre;
 	
 	@OneToMany(mappedBy = "facultad")
+	@JsonIgnore
 	private List<Equipo> equipos;
 	
 	@OneToMany(mappedBy = "facultad")
+	@JsonIgnore
 	private List<Investigador> investigadores;
 	
 	public Facultad() {

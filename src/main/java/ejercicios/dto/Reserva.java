@@ -32,11 +32,9 @@ public class Reserva {
 	private Date comienzo;
 	@Column(name = "fin")
 	private Date fin;
-	@Column(name = "numserie")
-	private String numserie;
 	
 	@ManyToOne
-	@JoinColumn(name = "num_serie")
+	@JoinColumn(name = "numserie")
 	@JsonIgnore
 	private Equipo equipo;
 	
@@ -44,10 +42,8 @@ public class Reserva {
 		super();
 	}
 
-	public Reserva(int id, String numserie, Investigador investigador, Date comienzo, Date fin, Equipo equipo) {
+	public Reserva(Investigador investigador, Date comienzo, Date fin, Equipo equipo) {
 		super();
-		this.id = id;
-		this.numserie = numserie;
 		this.investigador = investigador;
 		this.comienzo = comienzo;
 		this.fin = fin;
@@ -60,14 +56,6 @@ public class Reserva {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getNumserie() {
-		return numserie;
-	}
-
-	public void setNumserie(String numserie) {
-		this.numserie = numserie;
 	}
 
 	public Investigador getInvestigador() {
@@ -101,5 +89,5 @@ public class Reserva {
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
-
+	
 }

@@ -12,16 +12,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "equipo")
 public class Equipo {
 
 	@Id
 	private String numserie;
+	
 	private String nombre;
 	
 	@ManyToOne
 	@JoinColumn(name = "facultad")
+    @JsonIgnore 
 	private Facultad facultad;
 	
 	@OneToMany(mappedBy = "equipo")
